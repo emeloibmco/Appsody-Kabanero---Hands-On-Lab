@@ -1,0 +1,105 @@
+doctype html
+head
+  title Demo de seguros de vida
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
+  script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')
+.container-fluid
+  header.masthead.mb-auto
+    .inner
+      nav.navbar.navbar-expand-lg.navbar-light.bg-info
+        <img src="https://image.flaticon.com/icons/png/512/121/121731.png" style="height:50px;">
+        h2(Style="color:white; font-size:2vw") Asegura el futuro de tu familia
+  
+  .row
+    br
+    br 
+    div.col
+      br
+      br 
+      h2(style="font-size:2vw") Seguro de Vida: para todo lo que quieres alcanzar
+      br
+      p(style="font-size:1vw") El hombre que busca la seguridad, incluso en la mente, es como un hombre que corta sus miembros con el fin de que los artificiales no le den ningún dolor o dificultad. 
+      dt Henry Miller
+      br
+      p(style="font-size:1vw") Completa este formulario y recibiras hasta $200.000 en la cuota de tu seguro de vida
+      button.btn.btn-info.btn-lg(type='button' data-toggle='modal' data-target='#myModal') Completar formulario
+      br
+      br
+      div.bg-info.col-xs-2
+          if quotedAmount
+            if quotedAmount < 0
+              | No podemos proporcionar una cotización en este momento.
+            else
+              | La cuota estimada es de $#{quotedAmount} por mes
+              if basis
+                |  (determinado usando #{basis})
+
+    div.col 
+      br
+      br
+      <img src="https://cdn.pixabay.com/photo/2017/10/03/01/10/family-2810999__480.jpg" alt="Italian Trulli" style="width:100%; height:auto">
+
+    // Modal
+    #myModal.modal.fade(role='dialog')
+      .modal-dialog
+        // Modal content
+        .modal-content
+          .modal-header
+            h6.modal-title Formulario
+            button.close(type='button' data-dismiss='modal') &times;
+          .modal-body(style="margin-right: 150px")
+            .container(Style='background-color: Azure')
+          br
+          if errors
+            p(style="color:red") #{errors[0].msg}
+
+          form(action = "/quote", method = "POST")
+            div.col
+              label.mr-sm-2(for="age") Edad:
+              input(name="age" type="number" value=age)
+            div.col
+              label.mr-sm-2(for="weight") Peso:
+              input(name="weight" type="number" value=weight)
+              labelmr-sm-4(for="weight") kg
+            div.col
+              label.mr-sm-1(for="feet") Altura:
+              input(name="feet" type="number" value=feet)
+              labelmr-sm-4(for="feet") cm
+            p Genero:
+            div.custom-control.custom-checkbox
+              input(id="male" name="gender" type="radio" value="male" checked=(gender === 'male'))
+              label(for="male") Masculino
+            div.custom-control.custom-checkbox
+              input(id="female" name="gender" type="radio" value="female" checked=(gender === 'female'))
+              label(for="female") Femenino
+            p ¿Eres fumador?
+            div.mr-sm-2.custom-control.custom-checkbox
+              input(id="currentsmoker" name="smoker" type="radio" value="current" checked=(smoker === 'current'))
+              label(for="currentsmoker") Si
+            div.custom-control.custom-checkbox
+              input(id="formersmoker" name="smoker" type="radio" value="former" checked=(smoker === 'former'))
+              label(for="formersmoker") No fumo ahora, pero fumaba en el pasado
+            div.custom-control.custom-checkbox
+              input(id="neversmoker" name="smoker" type="radio" value="never" checked=(smoker === 'never'))
+              label(for="neversmoker") Nunca he fumado
+            p ¿Le han diagnosticado alguna de las siguientes condiciones?
+            div.custom-control.custom-checkbox
+              input(id="cancer" name="cancer" type="checkbox" value="true" checked=(cancer === 'true'))
+              label(for="cancer") Cancer
+            div.custom-control.custom-checkbox
+              input(id="cvd" name="cvd" type="checkbox" value="true" checked=(cvd === 'true'))
+              label(for="cvd") Enfermedad cardiovascular
+            br
+            button.btn.btn-info.btn-lg.btn-block(type="submit") Request quote
+            br
+          //- .modal-footer
+          //-   button.btn.btn-default(type='button' data-dismiss='modal') Close
+  
+footer.bg-info(style="position: fixed; width: 100%; bottom: 0")
+  div(style="display: block")
+    p(style="text-align: center") Pagina demo propiedad de IBM Cloud ©
+    a(href='https://cloud.ibm.com/')
