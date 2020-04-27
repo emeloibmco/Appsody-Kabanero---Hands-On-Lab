@@ -1,0 +1,44 @@
+---- Link Github ------
+
+https://github.com/emeloibmco/Appsody-Kabanero-Hands-On-Lab
+
+
+---- Dependencias Front -----
+
+"dependencies": {
+    "body-parser": "^1.19.0",
+    "config": "^3.2.0",
+    "express-validator": "^6.2.0",
+    "pug": "^2.0.0",
+    "request": "^2.88.0"
+  },
+
+
+---- Dependencias Back ----
+
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.8</version>
+    </dependency>
+
+
+---- Codigo prueba back local ----
+
+curl -X POST -d @backend-input.json  -H "Content-Type: application/json"  http://localhost:8080/quote
+
+
+---- Codigo prueba back OC ----
+
+curl -X POST -d @backend-input.json  -H "Content-Type: application/json"  http://$BACKEND_URL/quote
+
+---- Dacadoo ----
+
+https://models.dacadoo.com/doc/
+
+
+---- Dacadoo Key ----
+
+URL: https://models.dacadoo.com/score/2
+KEY: 70OZVS4d4gHbvJShm4lMc4s9wlQVw0FOlfnKtnGr
+Credential ID: 5ea71072ea668b05d25c65e8
