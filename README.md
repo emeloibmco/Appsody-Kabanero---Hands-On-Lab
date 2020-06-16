@@ -19,8 +19,15 @@ En esta guía se hará un Hands On de la construcción y despliegue de un aplica
 1. Ingresar a la URL :
       [https://appsody.dev/docs/installing/installing-appsody](https://appsody.dev/docs/installing/installing-appsody) 
  
- 2. Seleccionar el sistema operativo 
+2. Seleccionar el sistema operativo para abrir la guía de instalación de Appsody.
 
+3. Seguir el paso a paso de la instalación de Appsody.
+
+4. Verificar la correcta instalación de Appsody en la terminal o CMD del dispositivo:
+ 
+```
+    appsody version
+```
   
 <a name="instKab"></a>  
 ## 2. Instalación Kabanero  
