@@ -1,5 +1,4 @@
 
-
 # Guía Appsody-Kabanero
 En esta guía se hará un Hands On de la construcción y despliegue de un aplicativo web desarrollado de manera nativa para la nube con el uso de las tecnologías como Appsody, Kabanero y OpenShift.
 
@@ -115,24 +114,62 @@ Respuesta:
 <a name="proy"></a>  
 ## 3. Creación proyecto  
 
+En esta sección del HandsOn se va a construir el producto final donde se creara el proyecto y se clonara en de manera local los archivos de este github.
+
+1. Hay que ir a la carpeta inicial del computador donde se va a crear el desarrollo, en este ejemplo se va a realizar en la carpeta base del computador.
+2. Hay que crear dos carpetas que lleve por nombre una Quote-Application y la otra Git-App, esto para crear el despliegue que se la carpeta Quote-Application y la otra para clonar los archivos de este github en la maquina. 
+3. Dentro de la carpeta Quote-Application se crean dos carpetas más una para el FrontEnd y la otra para el BackEnd.
+4. Ahora hay que clonar las carpetas de este github desde la terminal o CMD del computador, con el siguiente comando:
+```
+	cd Git-App 
+	git clone https://github.com/emeloibmco/Appsody-Kabanero-Hands-On-Lab.git
+```    
 
 <a name="front"></a>  
 ## 4. Construcción FrontEnd con NodeJS  
 
-sometext
+1. Acceder a la carpeta del proyecto desde la CMD o terminal y desde ahí acceder a la carpeta del FrontEnd.
+```
+	cd Quote-Application/FrontEnd	
+```
+2. En este paso se va a crear un proyecto utilizando la CLI de Appsody para aligerar el desarrollo nativo de nube, como se observó en pasos anteriores, dentro de los repositorios de Kabanero se encuentra el repositorio de NodeJs que es el lenguaje en donde esta desarrollado el FrontEnd de la aplicación, por lo tanto se inicia con el siguiente comando:
 
+```
+		appsody init kabanero/nodejs-express
+```
+3. Al terminar el comando de appsody init se puede listar el contenido de la carpeta y se puede observar que hay nuevo archivos dentro de la misma que son archivos establecidos por Kabanero para una aplicación minimo de NodeJS con Express.
+
+```
+	% ls
+
+	app.js  package-lock.json  package.json  test
+```
+4. Con Appsody es posible correr localmente y de inmediato el proyecto sin utilizar librerías externas del lenguaje de desarrollo utilizado, solo utilizando el comando:
+```
+	appsody run
+```
+Resultado:
+	`App started on PORT 3000`
+
+Con esto se puede acceder a la direccion http://localhost:3000 desde cualquier navegador y se ve el proyecto base para el front creado con Appsody.
+
+ El stack de appsody con NodeJs y Express desde Kabanero, tiene un plus que permite mostrar desde adentro como puede ser el comportamiento de la aplicación con métricas desde los endpoint y el performance del aplicativo, para estoy hay varias url de acceso de manera local que muestran el comportamiento tales como:
+ - Endpoint de Salud: http://localhost:3000/health
+ - Endpoint de Vida: http://localhost:3000/live
+ - Endpoint de Terminación: http://localhost:3000/ready
+ - Endpoint de Métricas: http://localhost:3000/metrics
+ - Endpoint del Dashboard: http://localhost:3000/appmetrics-dash 
+
+ 
 <a name="back"></a>  
 ## 5. Construcción BackEnd con SpringBoot2
 
-sometext
+
 
 <a name="depBack"></a>  
 ## 6. Despliegue BackEnd con OpenShift y Appsody 
 
-sometext
+
 
 <a name="depFront"></a>  
 ## 7. Despliegue FrontEnd con OpenShift y Appsody 
-
-sometext
-
