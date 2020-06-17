@@ -1,4 +1,5 @@
 
+
 # Guía Appsody-Kabanero
 En esta guía se hará un Hands On de la construcción y despliegue de un aplicativo web desarrollado de manera nativa para la nube con el uso de las tecnologías como Appsody, Kabanero y OpenShift.
 
@@ -51,7 +52,14 @@ Resultado similar al siguiente:
 ```
 	appsody repo list
 ```
-*Si ya se encuentra en la lista del repositorio kabanero como libreria principal, seguir a la sección 3 de creación de proyecto*
+Respuesta:
+```
+	% appsody repo list
+
+	NAME  URL
+	*incubator  https://github.com/appsody/stacks/releases/latest/download/incubator-index.yaml
+	experimental  https://github.com/appsody/stacks/releases/latest/download/experimental-index.yaml
+```
 
 4. Usamos la CLI de Appsody para agregar la collección a la lista de repositorios con el siguiente comando:
 
@@ -62,12 +70,51 @@ Resultado similar al siguiente:
 ```
 	appsody repo list
 ```
-6. Cuando ya se encuentra durante la 
+Respuesta:
+```
+	% appsody repo list
 
+	NAME  URL
+	*incubator  https://github.com/appsody/stacks/releases/latest/download/incubator-index.yaml
+	experimental  https://github.com/appsody/stacks/releases/latest/download/experimental-index.yaml
+	kabanero  https://github.com/kabanero-io/collections/releases/download/0.2.1/kabanero-index.yaml
+```
+6. Cuando ya se encuentra dentro de la lista de repositorios es necesario colocar Kabanero Collections como el repositorio por defecto de Appsody para que sea más fácil el acceso al mismo, por lo tanto se escribe el siguiente comando:
+```
+	appsody repo set-default kabanero
+```
+7. Se comprueba nuevamente que Kabanero sea el repositorio por defecto de Appsody donde al lado del nombre y del link aparezca un * que lo identifique como el principal, con el siguiente comando:
+```
+	appsody repo list
+```
+Respuesta:
+```
+	%  appsody repo list
+	
+	NAME  URL
+	*kabanero https://github.com/kabanero-io/collections/releases/download/0.2.1/kabanero-index.yaml
+	experimental  https://github.com/appsody/stacks/releases/latest/download/experimental-index.yaml
+	incubator https://github.com/appsody/stacks/releases/latest/download/incubator-index.yaml
+```
+8. Ahora se puede comprobar los distintos tipos de repositorios apilados que contiene Kabanero Collections como parte de su desarrollo nativo para la nube, estos se pueden observar con el siguiente comando:
+
+```
+	appsody list kabanero
+```
+
+```
+	% appsody list kabanero
+
+	REPO       ID VERSION  	  TEMPLATES     DESCRIPTION
+	kabanero  java-microprofile  0.2.18 *default Eclipse MicroProfile on Open Liberty & OpenJ9 using Maven
+	kabanero  java-spring-boot2  0.3.15 *default, kotlin Spring Boot using OpenJ9 and Maven
+	kabanero  nodejs 0.2.5  *simple  Runtime for Node.js applications
+	kabanero  nodejs-express 0.2.7  scaffold, *simple  Express web framework for Node.js
+	kabanero  nodejs-loopback  0.1.5  *scaffold  LoopBack 4 API Framework for Node.js
+```
 <a name="proy"></a>  
 ## 3. Creación proyecto  
 
-sometext
 
 <a name="front"></a>  
 ## 4. Construcción FrontEnd con NodeJS  
@@ -88,3 +135,4 @@ sometext
 ## 7. Despliegue FrontEnd con OpenShift y Appsody 
 
 sometext
+
